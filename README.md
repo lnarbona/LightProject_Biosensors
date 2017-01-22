@@ -1,3 +1,0 @@
-# hackinscience
-# hackinscience
-# hackinscience
