@@ -40,24 +40,20 @@ def comp(nom_fichier_debut, nom_fichier_fin, condition):
     final = [(difference[i] / lista[i]) for i in range(0,len(lista))]    #division between this difference and lentils' initial lenght
     return final
 
-conditions = ("None", "UV", "Red", "Green", "Blue", "IR", "Sunlight")
-BoxName =  ["None", "UV", "Red", "Green", "Blue", "IR", "Sunlight"]
+conditions = ["None", "UV", "Red", "Green", "Blue", "IR", "Sunlight"]    #name of the conditions
 data = list()
-for i in range(len(conditions)):
-    a = comp('data_debut.csv', 'data_fin.csv', conditions[i])
-#    data.append(a)                 #to plot comparasion
+for i in range(len(conditions)):					 #loop to create a graph for each condition
+    a = comp('data_debut.csv', 'data_fin.csv', conditions[i])		 #do the fonction "comp" for each condition
+    data.append(a)
 #    b = sustraction('data_debut.csv', 'data_fin.csv', conditions[i])
     c = list()
-    for j in a:
+    for j in a:								 #loop that deletes negative values and add the legnth of other lentils to a list.
         if j >= 0:
             c.append(j)
-    data.append(c)
-    print (conditions[i])
-    print(c)
-plt.boxplot(data)
+    data.append(c)							 #adds positive lengths for each condition to a single list
 
-pylab.xticks([1,2,3,4, 5, 6, 7], BoxName)
-plt.ylabel('Lentils length')
-plt.title("Comparation")
-listacaca = [1, 2, 3, 4, 5, 6, 7]
-plt.show()
+plt.boxplot(data)							 #creates a boxplot for our data
+pylab.xticks([1,2,3,4, 5, 6, 7], conditions)				 #changes the x axis fot condition names
+plt.ylabel('Lentils length')						 #label x axis
+plt.title("Comparation")						 #boxplot's title
+plt.show()								 #it shows the boxplot
